@@ -1,0 +1,39 @@
+MIT License
+
+Copyright (c) 2026 Rakhila Turebayeva, Aisulu Kassekeyeva, Aizhan Nazyrova,
+Assem Abdikarim, Zhanar Lamasheva
+L.N. Gumilyov Eurasian National University, Astana, Kazakhstan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+NOTE ON THE UNDERLYING NEWS DATA
+
+The KazSumm dataset is derived from a publicly released collection of
+Tengrinews.kz news articles distributed on Kaggle under the MIT License. The
+MIT terms above apply to the KazSumm compilation: the filtering pipeline, the
+preprocessing code, the fixed train/validation/test split, and the
+accompanying documentation.
+
+Copyright in the individual news articles and headlines remains with
+Tengrinews.kz and their respective authors. The material is redistributed here
+for non-commercial research purposes, in the form of an annotated corpus for
+natural language processing. Users who intend to redistribute the article
+texts for any other purpose should contact the original publisher.
