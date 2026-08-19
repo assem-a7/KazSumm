@@ -1,0 +1,20 @@
+# KazSumm — reproducibility environment
+# Tested on Google Colab (T4 GPU), Python 3.10, CUDA 12.x
+# Pinned to the ranges used to produce the results reported in the paper.
+
+transformers>=4.46,<4.60
+peft>=0.13
+datasets>=2.20
+accelerate>=0.34
+sentencepiece
+rouge-score
+bert-score
+sumy
+nltk
+langdetect
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+torch
