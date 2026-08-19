@@ -47,13 +47,12 @@ KazSumm/
 ├── README.md
 ├── LICENSE                     # MIT (code, pipeline, annotations)
 ├── requirements.txt            # pinned dependencies
-├── src/
-│   ├── preprocessing.py        # raw Tengrinews CSV -> filtered dataset + split
-│   ├── textrank_baseline.py    # extractive TextRank baseline
-│   ├── train.py                # full fine-tuning and LoRA (r = 8, 16)
-│   ├── inference.py            # generate headlines (full model or LoRA adapter)
-│   ├── evaluate.py             # ROUGE + BERTScore + 95% CIs + significance
-│   └── analysis.py             # language-ID + human error-annotation aggregation
+├── preprocessing.py            # raw Tengrinews CSV -> filtered dataset + split
+├── textrank_baseline.py        # extractive TextRank baseline
+├── train.py                    # full fine-tuning and LoRA (r = 8, 16)
+├── inference.py                # generate headlines (full model or LoRA adapter)
+├── evaluate.py                 # ROUGE + BERTScore + 95% CIs + significance
+├── analysis.py                 # language-ID + human error-annotation aggregation
 ├── kazsum_full.zip             # main filtered dataset (26,273)
 ├── kazsum_unfiltered.zip       # alternative version (27,622)
 └── train.test.val.zip          # fixed train / val / test split
@@ -99,25 +98,25 @@ intervals and significance tests use bootstrap resampling (B = 10,000, seed 42).
 
 ```bash
 # 1. Build the dataset and split from the raw dump (already provided as CSVs/zips)
-python src/preprocessing.py --raw tengri_news.csv --outdir data --variant filtered
+python preprocessing.py --raw tengri_news.csv --outdir data --variant filtered
 
 # 2. Baselines and models
-python src/textrank_baseline.py --test_csv data/test.csv --out preds/textrank_preds.json
-python src/train.py --mode full  --data_dir data --out checkpoints/mt5_full_ft
-python src/train.py --mode lora --lora_r 8  --data_dir data --out checkpoints/mt5_lora_r8
-python src/train.py --mode lora --lora_r 16 --data_dir data --out checkpoints/mt5_lora_r16
+python textrank_baseline.py --test_csv data/test.csv --out preds/textrank_preds.json
+python train.py --mode full  --data_dir data --out checkpoints/mt5_full_ft
+python train.py --mode lora --lora_r 8  --data_dir data --out checkpoints/mt5_lora_r8
+python train.py --mode lora --lora_r 16 --data_dir data --out checkpoints/mt5_lora_r16
 
 # 3. Generate predictions on the test set
-python src/inference.py --model_path checkpoints/mt5_full_ft/best_model  --test_csv data/test.csv --out preds/fullft_preds.json
-python src/inference.py --model_path checkpoints/mt5_lora_r8/best_model  --test_csv data/test.csv --out preds/lora_r8_preds.json
-python src/inference.py --model_path checkpoints/mt5_lora_r16/best_model --test_csv data/test.csv --out preds/lora_r16_preds.json
+python inference.py --model_path checkpoints/mt5_full_ft/best_model  --test_csv data/test.csv --out preds/fullft_preds.json
+python inference.py --model_path checkpoints/mt5_lora_r8/best_model  --test_csv data/test.csv --out preds/lora_r8_preds.json
+python inference.py --model_path checkpoints/mt5_lora_r16/best_model --test_csv data/test.csv --out preds/lora_r16_preds.json
 
 # 4. Scores, confidence intervals, and significance tests
-python src/evaluate.py --preds_dir preds --out_dir results
+python evaluate.py --preds_dir preds --out_dir results
 
 # 5. Qualitative analyses
-python src/analysis.py --langid_preds preds/zeroshot_preds.json
-python src/analysis.py --annotations data/error_annotation_sheet.csv
+python analysis.py --langid_preds preds/zeroshot_preds.json
+python analysis.py --annotations data/error_annotation_sheet.csv
 ```
 
 ## Citation
